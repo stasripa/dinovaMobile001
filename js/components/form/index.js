@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Image,Platform } from 'react-native';
+import { Image, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Text, Button, Icon, List, ListItem, Card, CardItem, InputGroup, Input } from 'native-base';
@@ -9,6 +9,7 @@ import { openDrawer } from '../../actions/drawer';
 
 import theme from './form-theme';
 import styles from './styles';
+
 
 const {
   popRoute,
@@ -33,7 +34,7 @@ class Form extends Component {
   render() {
     return (
       <Container theme={theme} style={{ backgroundColor: '#384850' }} >
-        <Image source={glow2} style={styles.container} >
+        // <Image source={glow2} style={styles.container} >
 
           <Header>
             <Button transparent onPress={() => this.popRoute()}>

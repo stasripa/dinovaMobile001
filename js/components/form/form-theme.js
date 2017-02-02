@@ -164,7 +164,7 @@ module.exports = {
   listItemPadding: 15,
   listNoteColor: '#bababa',
   listNoteSize: 13,
-  listBg: '#fff',
+  // listBg: '#fff',
 
   iconFontSize: (Platform.OS === 'ios') ? 30 : 28,
 
