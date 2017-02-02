@@ -1,14 +1,16 @@
 
 import React, { Component } from 'react';
 import { Image, Platform } from 'react-native';
+import MapView from 'react-native-maps';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Text, Button, Icon, List, ListItem, Card, CardItem, InputGroup, Input } from 'native-base';
 
 import { openDrawer } from '../../actions/drawer';
 
-import theme from './form-theme';
+import theme from './map-theme';
 import styles from './styles';
+
 
 const {
   popRoute,
@@ -16,7 +18,7 @@ const {
 
 const glow2 = require('../../../images/glow2.png');
 
-class Form extends Component {
+class Dmap extends Component {
 
   static propTypes = {
     popRoute: React.PropTypes.func,
@@ -33,13 +35,13 @@ class Form extends Component {
   render() {
     return (
       <Container theme={theme} style={{ backgroundColor: '#384850' }} >
-        <Image source={glow2} style={styles.container} >
+        // <Image source={glow2} style={styles.container} >
 
           <Header>
             <Button transparent onPress={() => this.popRoute()}>
               <Icon name="ios-arrow-back" style={{ fontSize: 30, lineHeight: 32 }} />
             </Button>
-            <Title>Form</Title>
+            <Title>Maps</Title>
             <Button transparent onPress={this.props.openDrawer}>
               <Icon name="ios-menu" style={{ fontSize: 30, lineHeight: 32 }} />
             </Button>
@@ -71,7 +73,7 @@ class Form extends Component {
                 <List>
                   <ListItem style={{ marginLeft: 0 }}>
                     <InputGroup >
-                      <Input inlineLabel label="ALIAS" placeholder="John Doe" style={{ color: '#000',top: (Platform.OS === 'ios') ? undefined : 3 }} />
+                      <Input inlineLabel label="ALIAS" placeholder="John Doe" style={{ color: '#000', top: (Platform.OS === 'ios') ? undefined : 3 }} />
                     </InputGroup>
                   </ListItem>
                 </List>
@@ -107,4 +109,4 @@ const mapStateToProps = state => ({
   navigation: state.cardNavigation,
 });
 
-export default connect(mapStateToProps, bindAction)(Form);
+export default connect(mapStateToProps, bindAction)(Dmap);

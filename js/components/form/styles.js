@@ -13,7 +13,7 @@ module.exports = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     paddingRight: 10,
-    // backgroundColor: '#fff',
+    backgroundColor: '#fff',
   },
   mb25: {
     marginTop: 15,

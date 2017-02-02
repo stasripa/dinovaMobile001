@@ -16,6 +16,7 @@ const {
 } = actions;
 
 const glow2 = require('../../../images/glow2.png');
+const bkgImg = require('../../../images/launchscreen_fade.png');
 
 class Home extends Component {  //eslint-disable-line
 
@@ -30,37 +31,35 @@ class Home extends Component {  //eslint-disable-line
   render() {
     return (
       <Container theme={theme} style={{ backgroundColor: '#384850' }}>
-        <Image source={glow2} style={styles.container} >
+        <Image source={bkgImg} style={styles.container} >
 
           <Header>
-            <Title>Home</Title>
+            <Title>Welcome</Title>
             <Button transparent onPress={this.props.openDrawer} >
               <Icon name="ios-menu" style={{ fontSize: 30, lineHeight: 32 }} />
             </Button>
           </Header>
 
+
           <Content padder style={{ backgroundColor: 'transparent' }}>
+            <Content>
+              <Text style={styles.headline}>Search Dinova</Text>
+              <Text style={styles.headline2}>Network Restaurants</Text>
+            </Content>
             <List>
-              <ListItem iconLeft >
-                <Icon name="ios-megaphone" style={{width: 30}} />
-                <Text>Discussion With Client</Text>
-                <Text style={{ fontWeight: '400' }} note>8:00 AM</Text>
+              <ListItem iconRight >
+
+                <Text style={{ color: 'green' }}>Near Me</Text>
+                <Icon name="ios-locate-outline" style={{ width: 30, color: 'green' }} />
+
               </ListItem>
-              <ListItem iconLeft >
-                <Icon name="ios-people" style={{width: 30}} />
-                <Text >Daily Stand Up</Text>
-                <Text style={{ fontWeight: '400' }} note>10:00 AM</Text>
+              <ListItem iconRight >
+                <Icon name="ios-search-outline" style={{ width: 30, color: 'green' }} />
+                <Text style={{ color: 'green' }}>Where Im Going</Text>
+
+
               </ListItem>
-              <ListItem iconLeft >
-                <Icon name="ios-flag" style={{width: 30}} />
-                <Text>Finish list Screen</Text>
-                <Text style={{ fontWeight: '400' }} note>By 2:00 PM</Text>
-              </ListItem>
-              <ListItem iconLeft >
-                <Icon name="ios-restaurant" style={{width: 30}} />
-                <Text>Lunch Break</Text>
-                <Text style={{ fontWeight: '400' }} note>2:00 PM</Text>
-              </ListItem>
+
             </List>
 
             <Button

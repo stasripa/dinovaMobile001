@@ -1,7 +1,7 @@
 
 const React = require('react-native');
 
-const { StyleSheet,Platform } = React;
+const { StyleSheet, Platform } = React;
 
 module.exports = StyleSheet.create({
   container: {
@@ -17,16 +17,29 @@ module.exports = StyleSheet.create({
     width: 65,
     height: 65,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   name: {
     color: 'red',
   },
   text: {
+
     marginBottom: 10,
     fontSize: 18,
   },
+  headline: {
+    paddingTop: 20,
+    fontSize: 24,
+    color: 'green',
+
+  },
+  headline2: {
+    paddingTop: 5,
+    paddingBottom: 20,
+    fontSize: 24,
+    color: 'green',
+  },
   closeIcon: {
-    marginTop: (Platform.OS === 'ios') ? 2 : -7
-  }
+    marginTop: (Platform.OS === 'ios') ? 2 : -7,
+  },
 });

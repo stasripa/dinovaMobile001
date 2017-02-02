@@ -24,6 +24,7 @@ import Form from './components/form/';
 import Modal from './components/modal/';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
+import Dmap from './components/map/';
 
 const {
   popRoute,
@@ -114,8 +115,10 @@ class AppNavigator extends Component {
         return <Form />;
       case 'modal':
         return <Modal />;
+      case 'map':
+        return <Dmap />;
       default :
-        return <Login />;
+        return <Dmap />;
     }
   }
 
