@@ -31,6 +31,7 @@ module.exports = StyleSheet.create({
     paddingTop: 20,
     fontSize: 24,
     color: 'green',
+    alignSelf: 'center',
 
   },
   headline2: {
@@ -38,6 +39,7 @@ module.exports = StyleSheet.create({
     paddingBottom: 20,
     fontSize: 24,
     color: 'green',
+    alignSelf: 'center',
   },
   closeIcon: {
     marginTop: (Platform.OS === 'ios') ? 2 : -7,
