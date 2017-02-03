@@ -16,6 +16,6 @@ module.exports = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: 'rgba(152, 177, 160, 0.8)',
   },
 });

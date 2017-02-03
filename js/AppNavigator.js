@@ -118,7 +118,7 @@ class AppNavigator extends Component {
       case 'map':
         return <Dmap />;
       default :
-        return <Dmap />;
+        return <home />;
     }
   }
 

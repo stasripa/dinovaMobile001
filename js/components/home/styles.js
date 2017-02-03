@@ -44,4 +44,5 @@ module.exports = StyleSheet.create({
   closeIcon: {
     marginTop: (Platform.OS === 'ios') ? 2 : -7,
   },
+
 });

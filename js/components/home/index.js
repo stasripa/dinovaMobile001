@@ -47,10 +47,10 @@ class Home extends Component {  //eslint-disable-line
               <Text style={styles.headline2}>Network Restaurants</Text>
             </Content>
             <List>
-              <ListItem iconRight >
+              <ListItem iconRight style={{ justifyContent: 'flex-start' }} button onPress={() => this.navigateTo('form')} >
 
                 <Text style={{ color: 'green' }}>Near Me</Text>
-                <Icon name="ios-locate-outline" style={{ width: 30, color: 'green' }} />
+                <Icon name="ios-arrow-forward" style={{ width: 30, color: 'green' }} />
 
               </ListItem>
               <ListItem iconRight >
