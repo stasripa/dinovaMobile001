@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Button, Icon, List, ListItem, Text, Footer } from 'native-base';
@@ -12,7 +12,7 @@ import theme from '../../themes/base-theme';
 import styles from './styles';
 
 const {
-  reset,
+  reset, popRoute, pushRoute,
 } = actions;
 
 const glow2 = require('../../../images/glow2.png');
@@ -21,11 +21,22 @@ const bkgImg = require('../../../images/launchscreen_fade.png');
 class Home extends Component {  //eslint-disable-line
 
   static propTypes = {
+    popRoute: React.PropTypes.func,
+    pushRoute: React.PropTypes.func,
+    setIndex: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     reset: React.PropTypes.func,
     navigation: React.PropTypes.shape({
       key: React.PropTypes.string,
     }),
+  }
+  pushRoute(route, index) {
+    // this.props.setIndex(index);
+    this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
+  }
+
+  popRoute() {
+    this.props.popRoute(this.props.navigation.key);
   }
 
   render() {
@@ -47,7 +58,7 @@ class Home extends Component {  //eslint-disable-line
               <Text style={styles.headline2}>Network Restaurants</Text>
             </Content>
             <List>
-              <ListItem iconRight style={{ justifyContent: 'flex-start' }} button onPress={() => this.navigateTo('form')} >
+              <ListItem iconRight style={{ justifyContent: 'flex-start' }} button onPress={() => this.pushRoute('map')} >
 
                 <Text style={{ color: 'green' }}>Near Me</Text>
                 <Icon name="ios-arrow-forward" style={{ width: 30, color: 'green' }} />
@@ -83,8 +94,10 @@ class Home extends Component {  //eslint-disable-line
 
 function bindAction(dispatch) {
   return {
+    // setIndex: index => dispatch(setIndex(index)),
     openDrawer: () => dispatch(openDrawer()),
-    reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+    pushRoute: (route, key) => dispatch(pushRoute(route, key)),
+    reset: key => dispatch(reset([{ key: 'home' }], key, 0)),
   };
 }
 
