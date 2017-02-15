@@ -31,6 +31,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      store: {},
       showDownloadingModal: false,
       showInstalling: false,
       downloadProgress: 0,

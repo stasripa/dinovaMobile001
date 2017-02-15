@@ -1,22 +1,21 @@
 
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import axios from 'axios';
+import { Image, View } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, Title, Content, Text, Button, Icon, List, ListItem } from 'native-base';
-
+import { Container, Title, Header, Content, Button, Icon } from 'native-base';
 import { openDrawer } from '../../actions/drawer';
 
 import theme from '../../themes/base-theme';
 import styles from './styles';
+import RestaurantDetail from './RestaurantDetail';
 
-const {
-  popRoute,
-} = actions;
-
+const { popRoute } = actions;
 const glow2 = require('../../../images/glow2.png');
 
 class Lists extends Component {
+
 
   static propTypes = {
     popRoute: React.PropTypes.func,
@@ -26,11 +25,23 @@ class Lists extends Component {
     }),
   }
 
+  state = { restaurants: [] };
+
+  componentWillMount() {
+    axios.get('http://23.253.253.107/query/v1.2/search?apikey=88B6D7B3D8717086BBC0F6AA577E3531EAAEBB3ACBE4DF97540FD8B2AA5F89D744E0D77478AE7142CAD269995FFBA064&lat=26.122438&lng=-80.137314&distance=5&cuisine=&name=&city=&state=&zip=')
+      .then(response => this.setState({ restaurants: response.data }));
+  }
+
   popRoute() {
     this.props.popRoute(this.props.navigation.key);
   }
+  renderRestaurants() {
+    return this.state.restaurants.map(restaurant =>
+      <RestaurantDetail key={restaurant.id} restaurant={restaurant} />);
+  }
 
   render() {
+    console.log(this.state);
     return (
       <Container theme={theme} style={{ backgroundColor: '#384850' }}>
         <Image source={glow2} style={styles.container} >
@@ -46,31 +57,11 @@ class Lists extends Component {
           </Header>
 
           <Content style={{ backgroundColor: 'transparent' }}>
-            <List>
-              <ListItem iconLeft>
-                <Icon name="ios-people" />
-                <Text >Daily Stand Up</Text>
-                <Text style={{ fontWeight: '400' }} note>10:00 AM</Text>
-              </ListItem>
-              <ListItem iconLeft>
-                <Icon name="ios-flag" />
-                <Text>Finish list Screen</Text>
-                <Text style={{ fontWeight: '400' }} note>By 2:00 PM</Text>
-              </ListItem>
-              <ListItem iconLeft>
-                <Icon name="ios-restaurant" />
-                <Text>Lunch Break</Text>
-                <Text style={{ fontWeight: '400' }} note>2:00 PM</Text>
-              </ListItem>
-              <ListItem iconLeft>
-                <Icon name="ios-megaphone" />
-                <Text>Discussion With Client</Text>
-                <Text style={{ fontWeight: '400' }} note>6:00 PM</Text>
-              </ListItem>
-            </List>
+            <View>{this.renderRestaurants()}</View>
           </Content>
         </Image>
       </Container>
+
     );
   }
 }
@@ -84,6 +75,7 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
+  restaurants: state.restaurants,
 });
 
 export default connect(mapStateToProps, bindAction)(Lists);
